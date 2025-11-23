@@ -2,10 +2,18 @@
 config.php
 config-cloud.php
 
+# ملفات PHP القديمة (تم استبدالها بـ Firebase)
+*.php
+!config.example.php
+
+# مجلد Backend القديم
+backend/
+
 # ملفات مؤقتة
 fix_arabic.sql
 *.tmp
 *.bak
+*.sql
 
 # مجلدات النظام
 .DS_Store

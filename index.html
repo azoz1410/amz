@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام إدارة المخزون والفواتير - Amazon Store</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .container-main {
+        margin-top: 30px;
+      }
+      .stat-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+      .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+      .stat-value {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+      .stat-label {
+        color: #6c757d;
+        font-size: 14px;
+      }
+      .quick-action {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: block;
+        color: inherit;
+        cursor: pointer;
+      }
+      .quick-action:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        color: inherit;
+      }
+      .quick-action i {
+        font-size: 48px;
+        margin-bottom: 15px;
+      }
+      .action-products i {
+        color: #4caf50;
+      }
+      .action-invoices i {
+        color: #2196f3;
+      }
+      .action-reports i {
+        color: #ff9800;
+      }
+      .action-settings i {
+        color: #9c27b0;
+      }
+
+      .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .bg-gradient-success {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      }
+      .bg-gradient-info {
+        background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+      }
+      .bg-gradient-warning {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+      .bg-gradient-danger {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      }
+
+      .loading {
+        text-align: center;
+        padding: 50px;
+        color: white;
+      }
+
+      .alert-firebase {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="index.html">
+          <i class="bi bi-shop"></i>
+          <span id="storeName">متجر أمازون</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">
+                <i class="bi bi-house-door"></i> الرئيسية
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">
+                <i class="bi bi-box-seam"></i> المنتجات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="invoices.html">
+                <i class="bi bi-receipt"></i> الفواتير
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reports.html">
+                <i class="bi bi-graph-up"></i> التقارير
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="settings.html">
+                <i class="bi bi-gear"></i> الإعدادات
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid container-main">
+      <!-- تنبيه Firebase -->
+      <div
+        id="firebaseAlert"
+        class="alert-firebase alert alert-info"
+        style="display: none"
+      >
+        <h5><i class="bi bi-info-circle"></i> تنبيه مهم</h5>
+        <p>لم يتم تكوين Firebase بعد. يرجى اتباع الخطوات التالية:</p>
+        <ol>
+          <li>
+            انتقل إلى
+            <a href="https://console.firebase.google.com" target="_blank"
+              >Firebase Console</a
+            >
+          </li>
+          <li>أنشئ مشروع جديد</li>
+          <li>فعّل Firestore Database</li>
+          <li>
+            انسخ إعدادات Firebase وضعها في ملف <code>firebase-config.js</code>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Loading -->
+      <div id="loading" class="loading">
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">جاري التحميل...</span>
+        </div>
+        <p class="mt-3">جاري تحميل البيانات...</p>
+      </div>
+
+      <!-- Statistics Cards -->
+      <div id="statsContent" style="display: none">
+        <div class="row">
+          <!-- Total Products -->
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon bg-gradient-success text-white mx-auto">
+                <i class="bi bi-box-seam"></i>
+              </div>
+              <div class="stat-value text-center" id="totalProducts">0</div>
+              <div class="stat-label text-center">إجمالي المنتجات</div>
+            </div>
+          </div>
+
+          <!-- Low Stock Products -->
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon bg-gradient-warning text-white mx-auto">
+                <i class="bi bi-exclamation-triangle"></i>
+              </div>
+              <div class="stat-value text-center" id="lowStockProducts">0</div>
+              <div class="stat-label text-center">منتجات منخفضة المخزون</div>
+            </div>
+          </div>
+
+          <!-- Total Invoices -->
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon bg-gradient-info text-white mx-auto">
+                <i class="bi bi-receipt"></i>
+              </div>
+              <div class="stat-value text-center" id="totalInvoices">0</div>
+              <div class="stat-label text-center">إجمالي الفواتير</div>
+            </div>
+          </div>
+
+          <!-- Total Revenue -->
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon bg-gradient-primary text-white mx-auto">
+                <i class="bi bi-cash-stack"></i>
+              </div>
+              <div class="stat-value text-center">
+                <span id="totalRevenue">0</span>
+                <small id="currency" style="font-size: 18px">ر.س</small>
+              </div>
+              <div class="stat-label text-center">إجمالي الإيرادات</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row mt-4">
+          <div class="col-12">
+            <h4 class="text-white mb-3">
+              <i class="bi bi-lightning"></i> إجراءات سريعة
+            </h4>
+          </div>
+
+          <div class="col-md-3">
+            <a href="products.html" class="quick-action action-products">
+              <i class="bi bi-box-seam"></i>
+              <h5>إدارة المنتجات</h5>
+              <p class="text-muted mb-0">إضافة وتعديل المنتجات</p>
+            </a>
+          </div>
+
+          <div class="col-md-3">
+            <a href="create_invoice.html" class="quick-action action-invoices">
+              <i class="bi bi-plus-circle"></i>
+              <h5>فاتورة جديدة</h5>
+              <p class="text-muted mb-0">إنشاء فاتورة بيع جديدة</p>
+            </a>
+          </div>
+
+          <div class="col-md-3">
+            <a href="reports.html" class="quick-action action-reports">
+              <i class="bi bi-graph-up"></i>
+              <h5>التقارير</h5>
+              <p class="text-muted mb-0">عرض التقارير والإحصائيات</p>
+            </a>
+          </div>
+
+          <div class="col-md-3">
+            <a href="settings.html" class="quick-action action-settings">
+              <i class="bi bi-gear"></i>
+              <h5>الإعدادات</h5>
+              <p class="text-muted mb-0">تخصيص إعدادات النظام</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+
+    <!-- Firebase API -->
+    <script src="js/firebase-api.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Main Script -->
+    <script>
+      // تحميل البيانات عند تحميل الصفحة
+      document.addEventListener("DOMContentLoaded", async function () {
+        try {
+          // التحقق من تكوين Firebase
+          if (
+            !firebaseConfig.apiKey ||
+            firebaseConfig.apiKey === "YOUR_API_KEY"
+          ) {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("firebaseAlert").style.display = "block";
+            return;
+          }
+
+          // جلب الإعدادات
+          const settings = await FirebaseAPI.getAllSettings();
+          document.getElementById("storeName").textContent =
+            settings.store_name_ar || "متجر أمازون";
+          document.getElementById("currency").textContent =
+            settings.currency || "ر.س";
+
+          // جلب الإحصائيات
+          const stats = await FirebaseAPI.getStatistics();
+
+          document.getElementById("totalProducts").textContent =
+            stats.total_products;
+          document.getElementById("lowStockProducts").textContent =
+            stats.low_stock_products;
+          document.getElementById("totalInvoices").textContent =
+            stats.total_invoices;
+          document.getElementById("totalRevenue").textContent =
+            stats.total_revenue.toFixed(2);
+
+          // إخفاء Loading وعرض المحتوى
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("statsContent").style.display = "block";
+        } catch (error) {
+          console.error("خطأ في تحميل البيانات:", error);
+          document.getElementById("loading").innerHTML = `
+                    <div class="alert alert-danger">
+                        <h5>حدث خطأ في تحميل البيانات</h5>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+        }
+      });
+    </script>
+  </body>
+</html>
