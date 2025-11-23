@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎉 تحديث جديد متاح!</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 600px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .icon {
+        font-size: 5rem;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        color: #667eea;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .version {
+        color: #666;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      .features {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        text-align: right;
+      }
+
+      .feature-item {
+        padding: 10px 0;
+        border-bottom: 1px solid #dee2e6;
+      }
+
+      .feature-item:last-child {
+        border-bottom: none;
+      }
+
+      .feature-icon {
+        color: #4caf50;
+        font-size: 1.5rem;
+        margin-left: 10px;
+      }
+
+      .button-group {
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 15px 30px;
+        margin: 10px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+      }
+
+      .warning {
+        background: #fff3cd;
+        border: 2px solid #ffc107;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 20px 0;
+        color: #856404;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="icon">🎉</div>
+      <h1>تحديث جديد متاح!</h1>
+      <div class="version">الإصدار 2.0 - نظام الرسوم والعمولات</div>
+
+      <div class="features">
+        <div class="feature-item">
+          <span class="feature-icon">✅</span>
+          <strong>عمولة أمازون</strong> - نسبة مئوية مرنة لكل منتج
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✅</span>
+          <strong>رسوم الشحن</strong> - مبلغ ثابت حسب المنتج
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✅</span>
+          <strong>رسوم التخزين</strong> - تكاليف التخزين الشهرية
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✅</span>
+          <strong>حساب تلقائي</strong> - صافي الربح بعد الرسوم
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✅</span>
+          <strong>تقارير محسّنة</strong> - تحليل شامل للأرباح والرسوم
+        </div>
+      </div>
+
+      <div class="warning">
+        <strong>⚠️ مطلوب:</strong> تحديث قاعدة البيانات قبل الاستخدام!
+      </div>
+
+      <div class="button-group">
+        <a href="fees_guide.html" class="btn btn-primary">
+          📖 دليل التحديث الشامل
+        </a>
+        <a href="test_fees.php" class="btn"> 🧪 اختبر النظام الآن </a>
+      </div>
+
+      <div style="margin-top: 30px; color: #666; font-size: 0.9rem">
+        <p>قبل الاستخدام:</p>
+        <ol style="text-align: right; display: inline-block">
+          <li>شغّل ملف <code>update_fees_system.sql</code></li>
+          <li>اختبر عبر <code>test_fees.php</code></li>
+          <li>راجع الدليل في <code>fees_guide.html</code></li>
+        </ol>
+      </div>
+    </div>
+
+    <script>
+      // تحويل تلقائي بعد 10 ثواني (اختياري)
+      // setTimeout(() => {
+      //     window.location.href = 'fees_guide.html';
+      // }, 10000);
+    </script>
+  </body>
+</html>

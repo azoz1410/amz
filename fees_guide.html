@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام الرسوم والعمولات - دليل سريع</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        color: #667eea;
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 2.5rem;
+      }
+
+      .version {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 1.2rem;
+      }
+
+      .status {
+        text-align: center;
+        background: #4caf50;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
+      .section {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 20px 0;
+        border-radius: 10px;
+        border-right: 5px solid #667eea;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+      }
+
+      h3 {
+        color: #764ba2;
+        margin: 20px 0 10px 0;
+      }
+
+      .feature {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature h4 {
+        color: #667eea;
+        margin-bottom: 8px;
+      }
+
+      .step {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-right: 4px solid #4caf50;
+      }
+
+      .step-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: #4caf50;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        font-weight: bold;
+        margin-left: 10px;
+        font-size: 1.2rem;
+      }
+
+      .code {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin: 10px 0;
+        font-family: "Courier New", monospace;
+      }
+
+      .example {
+        background: #fff3cd;
+        border: 2px solid #ffc107;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 15px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+        background: white;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: right;
+        border: 1px solid #ddd;
+      }
+
+      th {
+        background: #667eea;
+        color: white;
+        font-weight: bold;
+      }
+
+      tr:nth-child(even) {
+        background: #f8f9fa;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin: 30px 0;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 15px 30px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: all 0.3s;
+        font-size: 1.1rem;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-success {
+        background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+      }
+
+      .btn-info {
+        background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+      }
+
+      .warning {
+        background: #fff3cd;
+        border-right: 4px solid #ffc107;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+
+      .success {
+        background: #d4edda;
+        border-right: 4px solid #28a745;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+
+      .info {
+        background: #d1ecf1;
+        border-right: 4px solid #17a2b8;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+
+      ul,
+      ol {
+        margin-right: 30px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      .highlight {
+        background: #ffeb3b;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+
+      .checklist {
+        list-style: none;
+        margin-right: 0;
+      }
+
+      .checklist li:before {
+        content: "☐ ";
+        color: #667eea;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎉 نظام الرسوم والعمولات</h1>
+      <div class="version">الإصدار 2.0 - نوفمبر 2024</div>
+
+      <div class="status">✅ النظام جاهز للاستخدام - تم التطوير بنجاح!</div>
+
+      <!-- المزايا الجديدة -->
+      <div class="section">
+        <h2>🚀 ما الجديد؟</h2>
+
+        <div class="feature">
+          <h4>✅ عمولة أمازون المرنة</h4>
+          <p>
+            حدد نسبة عمولة مختلفة لكل منتج (مثلاً: 15% للإلكترونيات، 17%
+            للملابس)
+          </p>
+        </div>
+
+        <div class="feature">
+          <h4>✅ رسوم الشحن والتغليف</h4>
+          <p>أضف رسوم شحن ثابتة لكل منتج حسب الحجم والوزن</p>
+        </div>
+
+        <div class="feature">
+          <h4>✅ رسوم التخزين</h4>
+          <p>احسب تكاليف التخزين الشهرية لكل منتج</p>
+        </div>
+
+        <div class="feature">
+          <h4>✅ حساب صافي الربح تلقائياً</h4>
+          <p>
+            <strong
+              >صافي الربح = الربح الإجمالي - (عمولة أمازون + الشحن +
+              التخزين)</strong
+            >
+          </p>
+        </div>
+
+        <div class="feature">
+          <h4>✅ تقارير شاملة ومحسّنة</h4>
+          <p>عرض إجمالي الرسوم، صافي الربح، والنسب المئوية في جميع التقارير</p>
+        </div>
+      </div>
+
+      <!-- خطوات التثبيت -->
+      <div class="section">
+        <h2>⚙️ خطوات التثبيت (إلزامية)</h2>
+
+        <div class="warning">
+          <strong>⚠️ تحذير:</strong> يجب تنفيذ هذه الخطوات لتفعيل النظام الجديد!
+        </div>
+
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>تحديث قاعدة البيانات</h3>
+          <p>افتح phpMyAdmin أو استخدم Terminal:</p>
+          <div class="code">
+            cd C:\xampp\htdocs\AMZ mysql -u root -p amz_inventory &lt;
+            update_fees_system.sql
+          </div>
+          <p>أو عبر phpMyAdmin:</p>
+          <ol>
+            <li>
+              افتح
+              <a href="http://localhost/phpmyadmin" target="_blank"
+                >http://localhost/phpmyadmin</a
+              >
+            </li>
+            <li>اختر قاعدة البيانات <strong>amz_inventory</strong></li>
+            <li>اذهب إلى تبويب "SQL"</li>
+            <li>انسخ محتوى ملف <code>update_fees_system.sql</code></li>
+            <li>الصقه واضغط "تنفيذ"</li>
+          </ol>
+        </div>
+
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>اختبار النظام</h3>
+          <p>افتح صفحة الاختبار للتحقق من عمل النظام:</p>
+          <div class="button-group">
+            <a href="test_fees.php" class="btn btn-success" target="_blank">
+              🧪 فتح صفحة الاختبار
+            </a>
+          </div>
+          <div class="success">
+            <strong>✅ ما يجب أن تراه:</strong>
+            <ul>
+              <li>إنشاء منتج تجريبي مع رسوم</li>
+              <li>حساب صافي الربح بشكل صحيح</li>
+              <li>إنشاء فاتورة مع رسوم تلقائية</li>
+              <li>عرض الإحصائيات الجديدة</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3>ابدأ الاستخدام!</h3>
+          <div class="button-group">
+            <a href="frontend/pages/index.html" class="btn" target="_blank">
+              📊 لوحة التحكم
+            </a>
+            <a href="index.php" class="btn btn-info" target="_blank">
+              📝 النظام القديم (للمقارنة)
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- مثال عملي -->
+      <div class="section">
+        <h2>💡 مثال عملي</h2>
+
+        <div class="example">
+          <h3>مثال: بيع هاتف ذكي</h3>
+
+          <table>
+            <tr>
+              <th>البيان</th>
+              <th>الحساب</th>
+              <th>المبلغ</th>
+            </tr>
+            <tr>
+              <td>سعر البيع</td>
+              <td>-</td>
+              <td><strong>1,800 ر.س</strong></td>
+            </tr>
+            <tr>
+              <td>سعر الشراء</td>
+              <td>-</td>
+              <td>1,000 ر.س</td>
+            </tr>
+            <tr>
+              <td><strong>الربح الإجمالي</strong></td>
+              <td>1800 - 1000</td>
+              <td><strong>800 ر.س</strong></td>
+            </tr>
+            <tr style="background: #fff3cd">
+              <td>عمولة أمازون (15%)</td>
+              <td>1800 × 0.15</td>
+              <td>270 ر.س</td>
+            </tr>
+            <tr style="background: #fff3cd">
+              <td>رسوم الشحن</td>
+              <td>-</td>
+              <td>25 ر.س</td>
+            </tr>
+            <tr style="background: #fff3cd">
+              <td>رسوم التخزين</td>
+              <td>-</td>
+              <td>10 ر.س</td>
+            </tr>
+            <tr style="background: #ffcdd2">
+              <td><strong>إجمالي الرسوم</strong></td>
+              <td>270 + 25 + 10</td>
+              <td><strong>305 ر.س</strong></td>
+            </tr>
+            <tr style="background: #c8e6c9">
+              <td><strong>صافي الربح</strong></td>
+              <td>800 - 305</td>
+              <td><strong class="highlight">495 ر.س</strong></td>
+            </tr>
+          </table>
+
+          <div class="info">
+            <strong>📊 التحليل:</strong>
+            <ul>
+              <li>نسبة الربح الإجمالي: <strong>44.4%</strong></li>
+              <li>نسبة الرسوم من الإيرادات: <strong>16.9%</strong></li>
+              <li>نسبة صافي الربح: <strong>27.5%</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- رسوم أمازون -->
+      <div class="section">
+        <h2>📋 دليل رسوم أمازون</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>الفئة</th>
+              <th>نسبة العمولة</th>
+              <th>رسوم الشحن (تقريبية)</th>
+              <th>رسوم التخزين (شهرياً)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>إلكترونيات</td>
+              <td>8-15%</td>
+              <td>20-30 ر.س</td>
+              <td>8-12 ر.س</td>
+            </tr>
+            <tr>
+              <td>كتب</td>
+              <td>15%</td>
+              <td>8-15 ر.س</td>
+              <td>3-5 ر.س</td>
+            </tr>
+            <tr>
+              <td>ملابس وإكسسوارات</td>
+              <td>17%</td>
+              <td>12-20 ر.س</td>
+              <td>5-8 ر.س</td>
+            </tr>
+            <tr>
+              <td>أدوات منزلية</td>
+              <td>15%</td>
+              <td>15-25 ر.س</td>
+              <td>5-10 ر.س</td>
+            </tr>
+            <tr>
+              <td>ألعاب وهدايا</td>
+              <td>15%</td>
+              <td>10-20 ر.س</td>
+              <td>4-8 ر.س</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="info">
+          <strong>💡 ملاحظة:</strong> هذه الرسوم تقريبية. راجع صفحة رسوم أمازون
+          الرسمية للحصول على أرقام دقيقة حسب فئة منتجك.
+        </div>
+      </div>
+
+      <!-- قائمة التحقق -->
+      <div class="section">
+        <h2>✅ قائمة التحقق</h2>
+
+        <ul class="checklist">
+          <li>تم تشغيل ملف <code>update_fees_system.sql</code></li>
+          <li>تم اختبار النظام عبر <code>test_fees.php</code></li>
+          <li>جميع الاختبارات نجحت بدون أخطاء</li>
+          <li>تم تحديث المنتجات الموجودة بالرسوم</li>
+          <li>تم اختبار إنشاء فاتورة جديدة</li>
+          <li>التقارير تعرض صافي الربح بشكل صحيح</li>
+        </ul>
+      </div>
+
+      <!-- الموارد -->
+      <div class="section">
+        <h2>📚 الموارد والوثائق</h2>
+
+        <table>
+          <tr>
+            <th>الملف</th>
+            <th>الوصف</th>
+          </tr>
+          <tr>
+            <td><code>FEES_GUIDE_AR.md</code></td>
+            <td>دليل شامل ومفصل (50+ صفحة)</td>
+          </tr>
+          <tr>
+            <td><code>QUICK_START_FEES.md</code></td>
+            <td>دليل البدء السريع</td>
+          </tr>
+          <tr>
+            <td><code>README_FEES.md</code></td>
+            <td>نظرة عامة عن النظام</td>
+          </tr>
+          <tr>
+            <td><code>test_fees.php</code></td>
+            <td>صفحة اختبار تفاعلية</td>
+          </tr>
+          <tr>
+            <td><code>update_fees_system.sql</code></td>
+            <td>ملف تحديث قاعدة البيانات</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- الدعم -->
+      <div class="section">
+        <h2>🆘 هل تحتاج مساعدة؟</h2>
+
+        <div class="info">
+          <h3>المشاكل الشائعة:</h3>
+
+          <h4>1. خطأ: "Unknown column 'amazon_fee_percent'"</h4>
+          <p>
+            <strong>الحل:</strong> لم يتم تشغيل ملف SQL. راجع الخطوة 1 أعلاه.
+          </p>
+
+          <h4>2. صافي الربح يظهر 0 أو سالب</h4>
+          <p>
+            <strong>الحل:</strong> تحقق من رسوم المنتج. قد تكون الرسوم أعلى من
+            الربح الإجمالي.
+          </p>
+
+          <h4>3. صفحة الاختبار لا تعمل</h4>
+          <p><strong>الحل:</strong> تأكد من تشغيل Apache وMySQL في XAMPP.</p>
+        </div>
+
+        <div class="success">
+          <strong>✨ نصيحة:</strong> راجع ملف
+          <code>FEES_GUIDE_AR.md</code> للحصول على إجابات تفصيلية وأمثلة متقدمة!
+        </div>
+      </div>
+
+      <!-- روابط سريعة -->
+      <div class="section">
+        <h2>🔗 روابط سريعة</h2>
+
+        <div class="button-group">
+          <a href="test_fees.php" class="btn btn-success" target="_blank">
+            🧪 صفحة الاختبار
+          </a>
+          <a href="frontend/pages/index.html" class="btn" target="_blank">
+            📊 لوحة التحكم الجديدة
+          </a>
+          <a href="index.php" class="btn btn-info" target="_blank">
+            📝 النظام القديم
+          </a>
+          <a href="http://localhost/phpmyadmin" class="btn" target="_blank">
+            🗄️ phpMyAdmin
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        style="
+          text-align: center;
+          margin-top: 40px;
+          padding-top: 20px;
+          border-top: 2px solid #ddd;
+        "
+      >
+        <p style="color: #666; font-size: 0.9rem">
+          <strong>نظام إدارة المخزون والفواتير</strong><br />
+          الإصدار 2.0 - نوفمبر 2024<br />
+          🟢 جاهز للإنتاج
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

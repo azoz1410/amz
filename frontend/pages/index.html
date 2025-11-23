@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة التحكم - نظام إدارة المخزون</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" id="storeName">متجر أمازون</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">لوحة التحكم</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">المنتجات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="invoices.html">الفواتير</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reports.html">التقارير</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="settings.html">الإعدادات</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <!-- إحصائيات سريعة -->
+      <div class="row mb-4">
+        <div class="col-md-3">
+          <div class="stats-card sales">
+            <h3 id="totalSales">0.00 ر.س</h3>
+            <p>إجمالي المبيعات</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stats-card profit">
+            <h3 id="totalProfit">0.00 ر.س</h3>
+            <p>إجمالي الأرباح</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stats-card products">
+            <h3 id="totalProducts">0</h3>
+            <p>عدد المنتجات</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stats-card invoices">
+            <h3 id="totalInvoices">0</h3>
+            <p>عدد الفواتير</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- أفضل المنتجات -->
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="mb-0">أفضل المنتجات مبيعاً</h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>المنتج</th>
+                      <th>الكمية المباعة</th>
+                      <th>الأرباح</th>
+                    </tr>
+                  </thead>
+                  <tbody id="topProductsTable">
+                    <tr>
+                      <td colspan="3" class="text-center">
+                        <div class="spinner-border" role="status"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- أحدث الفواتير -->
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+              <h5 class="mb-0">أحدث الفواتير</h5>
+              <a href="invoices.html" class="btn btn-sm btn-light">عرض الكل</a>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>رقم الفاتورة</th>
+                      <th>العميل</th>
+                      <th>المبلغ</th>
+                      <th>التاريخ</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recentInvoicesTable">
+                    <tr>
+                      <td colspan="4" class="text-center">
+                        <div class="spinner-border" role="status"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- تنبيهات المخزون -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header bg-warning text-dark">
+              <h5 class="mb-0">تنبيهات المخزون المنخفض</h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>المنتج</th>
+                      <th>SKU</th>
+                      <th>الكمية المتبقية</th>
+                      <th>حد التنبيه</th>
+                      <th>الإجراء</th>
+                    </tr>
+                  </thead>
+                  <tbody id="lowStockTable">
+                    <tr>
+                      <td colspan="5" class="text-center">
+                        <div class="spinner-border" role="status"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+      // تحميل البيانات
+      async function loadDashboard() {
+        try {
+          // تحميل الإعدادات
+          const settings = await API.getSettings();
+          document.getElementById("storeName").textContent =
+            settings.store_name || "متجر أمازون";
+          const currency = settings.currency || "ر.س";
+
+          // تحميل الإحصائيات
+          const stats = await API.getDashboardStats();
+          document.getElementById("totalSales").textContent = formatCurrency(
+            stats.total_sales,
+            currency
+          );
+          document.getElementById("totalProfit").textContent = formatCurrency(
+            stats.total_profit,
+            currency
+          );
+          document.getElementById("totalProducts").textContent =
+            stats.total_products;
+          document.getElementById("totalInvoices").textContent =
+            stats.total_invoices;
+
+          // تحميل أفضل المنتجات
+          const topProducts = await API.getTopProducts(5);
+          const topProductsTable = document.getElementById("topProductsTable");
+          if (topProducts.length > 0) {
+            topProductsTable.innerHTML = topProducts
+              .map(
+                (product) => `
+                        <tr>
+                            <td>${product.name}</td>
+                            <td>${product.total_sold}</td>
+                            <td>${formatCurrency(
+                              product.total_profit,
+                              currency
+                            )}</td>
+                        </tr>
+                    `
+              )
+              .join("");
+          } else {
+            topProductsTable.innerHTML =
+              '<tr><td colspan="3" class="text-center">لا توجد بيانات</td></tr>';
+          }
+
+          // تحميل أحدث الفواتير
+          const recentInvoices = await API.getRecentInvoices(5);
+          const recentInvoicesTable = document.getElementById(
+            "recentInvoicesTable"
+          );
+          if (recentInvoices.length > 0) {
+            recentInvoicesTable.innerHTML = recentInvoices
+              .map(
+                (invoice) => `
+                        <tr>
+                            <td><a href="invoice_view.html?id=${invoice.id}">${
+                  invoice.invoice_number
+                }</a></td>
+                            <td>${invoice.customer_name}</td>
+                            <td>${formatCurrency(invoice.total, currency)}</td>
+                            <td>${formatDate(invoice.created_at)}</td>
+                        </tr>
+                    `
+              )
+              .join("");
+          } else {
+            recentInvoicesTable.innerHTML =
+              '<tr><td colspan="4" class="text-center">لا توجد فواتير</td></tr>';
+          }
+
+          // تحميل منتجات المخزون المنخفض
+          const lowStockProducts = await API.getLowStockProducts();
+          const lowStockTable = document.getElementById("lowStockTable");
+          if (lowStockProducts.length > 0) {
+            lowStockTable.innerHTML = lowStockProducts
+              .map(
+                (product) => `
+                        <tr>
+                            <td>${product.name}</td>
+                            <td>${product.sku}</td>
+                            <td><span class="badge bg-danger">${product.stock_quantity}</span></td>
+                            <td>${product.low_stock_alert}</td>
+                            <td>
+                                <a href="products.html?edit=${product.id}" class="btn btn-sm btn-primary">تعديل</a>
+                            </td>
+                        </tr>
+                    `
+              )
+              .join("");
+          } else {
+            lowStockTable.innerHTML =
+              '<tr><td colspan="5" class="text-center text-success">جميع المنتجات بمخزون كافي</td></tr>';
+          }
+        } catch (error) {
+          console.error("Error loading dashboard:", error);
+        }
+      }
+
+      // تحميل البيانات عند فتح الصفحة
+      document.addEventListener("DOMContentLoaded", loadDashboard);
+    </script>
+  </body>
+</html>

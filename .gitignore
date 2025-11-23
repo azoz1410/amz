@@ -1,0 +1,34 @@
+# ملفات الإعدادات الحساسة
+config.php
+config-cloud.php
+
+# ملفات مؤقتة
+fix_arabic.sql
+*.tmp
+*.bak
+
+# مجلدات النظام
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ملفات IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ملفات Logs
+*.log
+error_log
+
+# ملفات التحميل (إذا كان هناك مجلد uploads)
+uploads/
+temp/
+
+# Node modules (إذا كنت تستخدم npm)
+node_modules/
+
+# Composer (إذا كنت تستخدم composer)
+vendor/

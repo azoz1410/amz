@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة المخزون - الصفحة الرئيسية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { color: #667eea; margin-bottom: 20px; }
+        p { color: #666; line-height: 1.6; margin: 15px 0; }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-update {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏪 نظام إدارة المخزون</h1>
+        <p><strong>الإصدار 2.0</strong> - نظام الرسوم والعمولات</p>
+        
+        <p style="margin-top: 30px;">اختر النظام المناسب:</p>
+        
+        <a href="update_notice.html" class="btn btn-update">
+            <span class="badge">جديد</span>
+            🎉 التحديث الجديد - نظام الرسوم
+        </a>
+        
+        <a href="index.php" class="btn">
+            📊 النظام القديم (Monolithic)
+        </a>
+        
+        <a href="frontend/pages/index.html" class="btn">
+            🚀 النظام الجديد (Separated)
+        </a>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
+            <p style="font-size: 0.9rem; color: #999;">
+                <strong>روابط مفيدة:</strong><br>
+                <a href="test_fees.php" style="color: #667eea;">اختبار النظام</a> |
+                <a href="fees_guide.html" style="color: #667eea;">دليل الاستخدام</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

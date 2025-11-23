@@ -1,0 +1,46 @@
+# ملفات Git
+.git
+.gitignore
+
+# ملفات التطوير المحلي
+xampp/
+.vscode/
+.idea/
+
+# ملفات README والتوثيق
+README*.md
+GUIDE*.md
+FEES_GUIDE*.md
+UPDATE_NOTES.md
+COMPLETION_SUMMARY.md
+CURRENCY_UPDATE.md
+QUICK_START_FEES.md
+
+# ملفات HTML الخاصة بالتطوير
+start.html
+redirect.html
+update_notice.html
+fees_guide.html
+
+# ملفات الاختبار
+test_*.php
+
+# ملفات قاعدة البيانات المحلية
+database.sql
+update_database.sql
+update_fees_system.sql
+
+# ملفات النسخ الاحتياطي
+*.bak
+*.backup
+*.old
+
+# ملفات النظام
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ملفات المحرر
+*~
+*.swp
+*.swo
